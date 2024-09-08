@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accident Alert System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.1.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.1.0/ol.css">
+</head>
+<body>
+    <header>
+        <h1>Accident Alert System</h1>
+    </header>
+    <main>
+        <section id="accident-details" class="slide-in">
+            <h2>Accident Details</h2>
+            <div class="detail">
+                <strong>Impact/Crash Detected:</strong> <span id="impact-status">Yes</span>
+            </div>
+            <div class="detail">
+                <strong>Magnitude:</strong> <span id="magnitude-value">3.5</span> g
+                <div class="progress-bar">
+                    <div class="progress" style="width: 70%;" id="magnitude-progress"></div>
+                </div>
+            </div>
+            <div class="detail">
+                <strong>GPS Location:</strong> <span id="gps-location">13.0827° N, 80.2707° E</span>
+            </div>
+            <div id="map" class="map"></div>
+        </section>
+        <nav>
+            <a class="nav-button slide-in" href="severity.html">Check Severity</a>
+            <a class="nav-button slide-in" href="suggestions.html">Get Suggestions</a>
+        </nav>
+    </main>
+    <footer>
+        <p>&copy; 2024 Accident Alert System</p>
+    </footer>
+    <script>
+        // Initialize OpenLayers map
+        const map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([80.2707, 13.0827]), // Coordinates for Chennai
+                zoom: 12
+            })
+        });
+    </script>
+</body>
+</html>
